@@ -234,7 +234,7 @@ module Geokit
         elsif options.has_key?(:range)
           "#{distance_column_name} >= #{options[:range].first} AND #{distance_column_name} <#{'=' unless options[:range].exclude_end?} #{options[:range].last}"
         end
-        Arel::SqlLiteral.new("(#{res})") if res.present?
+        Arel::Nodes::SqlLiteral.new("(#{res})") if res.present?
       end
 
       def bound_conditions(bounds)
